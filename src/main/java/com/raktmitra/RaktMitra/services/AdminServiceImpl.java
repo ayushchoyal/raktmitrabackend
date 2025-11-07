@@ -34,4 +34,8 @@ public class AdminServiceImpl implements AdminService{
     public List<Patient> getAllPatients(){
         return patientRepo.findAll();
     }
+     public void deletePatientById(Long id) {
+        donorRepository.deleteById(id);
+    }
 }
+
