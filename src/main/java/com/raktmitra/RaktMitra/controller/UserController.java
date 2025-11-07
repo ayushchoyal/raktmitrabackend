@@ -44,7 +44,7 @@ public class UserController {
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@RequestBody User user) {
         try {
-            if (user.getRole() == null || user.getRole().isEmpty()) user.setRole("USER");
+            if (user.getRole() == null || user.getRole().isEmpty()) user.setRole("ADMIN");
             User savedUser = userService.registerUser(user);
             return ResponseEntity.ok(Map.of("success", true, "user", savedUser));
         } catch (Exception e) {
@@ -100,6 +100,7 @@ public class UserController {
 
 
 }
+
 
 
 
