@@ -46,5 +46,11 @@ public class AdminController {
         Donor updatedDonor = adminService.updateDonorStatus(id, donorRequest.isStatus());
         return ResponseEntity.ok(updatedDonor);
     }
+        @DeleteMapping("/admin/patient/{id}")
+    public ResponseEntity<?> deletePatient(@PathVariable Long id) {
+        adminService.deletePatientById(id);
+        return ResponseEntity.ok("Patient deleted successfully");
+    }
 }
+
 
