@@ -44,6 +44,9 @@ public class DonorService {
     public List<Donor> donorSearch(String bloodGroup){
         return donorRepository.findByBloodGroupIgnoreCaseContaining(bloodGroup);
     }
-
+    public boolean existsEmail(String email) {
+        return donorRepository.existsByEmail(email);
+    }
 
 }
+
