@@ -106,7 +106,12 @@ public class DonorController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-
+@GetMapping("/check-email")
+    public ResponseEntity<?> checkEmail(@RequestParam String email) {
+        boolean exists = donorService.existsEmail(email);
+        return ResponseEntity.ok(Map.of("exists", exists));
+    }
 
 }
+
 
