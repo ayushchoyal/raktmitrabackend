@@ -19,7 +19,7 @@ import java.util.Map;
 
 @RestController
 @CrossOrigin(origins = {
-        "http://localhost:5173",
+
         "https://rakt-mitra-blood-donation.vercel.app"
 }, allowCredentials = "true")
 public class UserController {
@@ -100,3 +100,4 @@ public class UserController {
 
 
 }
+
