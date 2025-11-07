@@ -40,10 +40,7 @@ public class UserController {
     public UserController(UserService userService){
         this.userService = userService;
     }
-     @RequestMapping(value = "/{[path:[^\\.]*}")
-    public String forward() {
-        return "forward:/index.html";
-    }
+     
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@RequestBody User user) {
         try {
@@ -103,5 +100,6 @@ public class UserController {
 
 
 }
+
 
 
