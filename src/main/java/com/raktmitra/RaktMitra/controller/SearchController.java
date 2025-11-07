@@ -14,7 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/search")
 @CrossOrigin(origins = {
-        "http://localhost:5173",
+
         "https://rakt-mitra-blood-donation.vercel.app"
 }, allowCredentials = "true")
 public class SearchController {
@@ -41,3 +41,4 @@ public class SearchController {
 
     }
 }
+
