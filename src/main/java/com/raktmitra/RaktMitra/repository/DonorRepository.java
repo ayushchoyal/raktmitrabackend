@@ -15,4 +15,7 @@ public interface DonorRepository extends JpaRepository<Donor,Long> {
     List<Donor> findByStatusTrueOrderByIdDesc();
 
     List<Donor> findByBloodGroupIgnoreCaseContaining(String bloodGroup);
+
+        boolean existsByEmail(String email);
 }
+
