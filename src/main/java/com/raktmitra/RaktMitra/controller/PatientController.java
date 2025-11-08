@@ -59,7 +59,7 @@ public class PatientController {
             Path path = Paths.get(UPLOAD_DIR + fileName);
             Files.write(path, image.getBytes());
 
-            imagePath = "http://localhost:8080/uploads/" + fileName;
+            imagePath = "https://raktmitrabackend.onrender.com/uploads/" + fileName;
         }
         User user = userRepo.findByEmail(email).orElse(null);
         Patient patient = new Patient();
@@ -89,4 +89,5 @@ public class PatientController {
 
     }
 }
+
 
