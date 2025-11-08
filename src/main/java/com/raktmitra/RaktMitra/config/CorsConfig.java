@@ -11,7 +11,7 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("https://raktmitrabackend.onrender.com") // frontend
+                        .allowedOrigins("https://rakt-mitra-blood-donation.vercel.app/") // frontend
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")
                         .allowCredentials(true);
@@ -19,4 +19,5 @@ public class CorsConfig {
         };
     }
 }
+
 
