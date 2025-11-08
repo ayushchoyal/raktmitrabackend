@@ -65,7 +65,7 @@ public class DonorController {
                 String fileName = System.currentTimeMillis() + "_" + image.getOriginalFilename();
                 Path filePath = uploadPath.resolve(fileName);
                 Files.copy(image.getInputStream(), filePath);
-                imageUrl = "http://localhost:8080/uploads/" + fileName;
+                imageUrl = "https://raktmitrabackend.onrender.com/uploads/" + fileName;
 
             }
 
@@ -115,6 +115,7 @@ public class DonorController {
     }
 
 }
+
 
 
 
