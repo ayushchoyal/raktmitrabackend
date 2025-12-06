@@ -4,6 +4,7 @@ import com.raktmitra.RaktMitra.entity.Donor;
 import com.raktmitra.RaktMitra.repository.DonorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,6 +21,8 @@ public class DonorService {
         if (existing.isPresent()) {
             Donor existingDonor = existing.get();
             existingDonor.setAddress(donor.getAddress());
+            existingDonor.setCity(donor.getCity());
+            existingDonor.setState(donor.getState());
             existingDonor.setDob(donor.getDob());
             existingDonor.setGender(donor.getGender());
             existingDonor.setWeight(donor.getWeight());
@@ -41,12 +44,12 @@ public class DonorService {
         return donorRepository.findById(id);
     }
 
-    public List<Donor> donorSearch(String bloodGroup){
-        return donorRepository.findByBloodGroupIgnoreCaseContaining(bloodGroup);
+    public List<Donor> donorSearch( String bloodGroup) {
+        return donorRepository.findByBloodGroupIgnoreCaseAndStatusTrue(bloodGroup);
     }
+
+
     public boolean existsEmail(String email) {
         return donorRepository.existsByEmail(email);
     }
-
 }
-
