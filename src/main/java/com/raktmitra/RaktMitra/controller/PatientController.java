@@ -19,7 +19,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/user")
 @CrossOrigin(origins = {
-
+        "http://localhost:5173",
         "https://rakt-mitra-blood-donation.vercel.app"
 }, allowCredentials = "true")
 public class PatientController {
@@ -59,7 +59,7 @@ public class PatientController {
             Path path = Paths.get(UPLOAD_DIR + fileName);
             Files.write(path, image.getBytes());
 
-            imagePath = "https://raktmitrabackend.onrender.com/uploads/" + fileName;
+            imagePath = "http://localhost:8080/uploads/" + fileName;
         }
         User user = userRepo.findByEmail(email).orElse(null);
         Patient patient = new Patient();
@@ -89,5 +89,3 @@ public class PatientController {
 
     }
 }
-
-
