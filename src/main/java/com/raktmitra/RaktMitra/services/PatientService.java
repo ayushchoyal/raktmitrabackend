@@ -3,6 +3,7 @@ package com.raktmitra.RaktMitra.services;
 import com.raktmitra.RaktMitra.entity.Donor;
 import com.raktmitra.RaktMitra.entity.Patient;
 import com.raktmitra.RaktMitra.repository.PatientRepo;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -45,7 +46,7 @@ public class PatientService {
         return patientRepo.save(patient);
     }
 
-    public List<Patient> patientSearch(String bloodGroup) {
-        return patientRepo.findByBloodGroupIgnoreCaseContaining(bloodGroup);
+    public List<Patient> patientSearch( String bloodGroup) {
+        return patientRepo.findByBloodGroupIgnoreCase(bloodGroup);
     }
 }
