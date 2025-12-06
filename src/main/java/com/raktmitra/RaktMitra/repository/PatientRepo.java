@@ -10,5 +10,7 @@ import java.util.Optional;
 public interface PatientRepo extends JpaRepository<Patient,Long> {
     Optional<Patient>findByEmail(String email);
 
-    List<Patient> findByBloodGroupIgnoreCaseContaining(String bloodGroup);
+
+
+    List<Patient> findByBloodGroupIgnoreCase(String bloodGroup);
 }
