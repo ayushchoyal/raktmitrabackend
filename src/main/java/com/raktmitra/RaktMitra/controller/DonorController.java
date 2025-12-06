@@ -1,12 +1,11 @@
 package com.raktmitra.RaktMitra.controller;
 
-import java.util.Map;
-
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 import com.raktmitra.RaktMitra.dto.DonorDto;
 import com.raktmitra.RaktMitra.entity.User;
@@ -25,7 +24,7 @@ import com.raktmitra.RaktMitra.services.DonorService;
 @RestController
 @RequestMapping("/user")
 @CrossOrigin(origins = {
-
+        "http://localhost:5173",
         "https://rakt-mitra-blood-donation.vercel.app"
 }, allowCredentials = "true")
 public class DonorController {
@@ -44,6 +43,8 @@ public class DonorController {
             @RequestParam("email") String email,
             @RequestParam("phone") String phone,
             @RequestParam("address") String address,
+            @RequestParam("city") String city,
+            @RequestParam("state") String state,
             @RequestParam("dob") String dob,
             @RequestParam("weight") Double weight,
             @RequestParam("gender") String gender,
@@ -65,7 +66,7 @@ public class DonorController {
                 String fileName = System.currentTimeMillis() + "_" + image.getOriginalFilename();
                 Path filePath = uploadPath.resolve(fileName);
                 Files.copy(image.getInputStream(), filePath);
-                imageUrl = "https://raktmitrabackend.onrender.com/uploads/" + fileName;
+                imageUrl = "http://localhost:8080/uploads/" + fileName;
 
             }
 
@@ -78,6 +79,8 @@ public class DonorController {
             donor.setEmail(email);
             donor.setPhone(phone);
             donor.setAddress(address);
+            donor.setCity(city);
+            donor.setState(state);
             donor.setDob(LocalDate.parse(dob));
             donor.setWeight(weight);
             donor.setGender(gender);
@@ -108,14 +111,12 @@ public class DonorController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-@GetMapping("/check-email")
+    @GetMapping("/check-email")
     public ResponseEntity<?> checkEmail(@RequestParam String email) {
         boolean exists = donorService.existsEmail(email);
         return ResponseEntity.ok(Map.of("exists", exists));
     }
 
+
+
 }
-
-
-
-
